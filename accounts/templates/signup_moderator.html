@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h2>Sign up as a Moderator</h2>
+  <form method="post">
+    {% csrf_token %}
+    <div>
+      <label for="name">Username:</label>
+      <input type="text" name="name" required>
+    </div>
+    <div>
+      <label for="mail">Email:</label>
+      <input type="email" name="mail" required>
+    </div>
+    <div>
+      <label for="password">Password:</label>
+      <input type="password" name="password" required>
+    </div>
+    <div>
+      <label for="password2">Confirm Password:</label>
+      <input type="password" name="password2" required>
+    </div>
+    <button type="submit">Sign up</button>
+  </form>
+{% endblock %}

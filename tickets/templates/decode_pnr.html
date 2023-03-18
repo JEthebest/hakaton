@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="card">
+        <div class="card-header">
+          <h1 class="text-center">Конвертируй PNR в понятный вид</h1>
+        </div>
+        <div class="card-body">
+          <form method="post" class="needs-validation" novalidate>
+            {% csrf_token %}
+            <div class="form-group">
+              <p>1  TS 275 J 15OCT 4 LGWYVR HK1         1010 1200   332 E 0</p>
+              <p>2  AC8097 Y 15OCT 4 YVRSEA HK1         1335 1435   DH4 E 0</p>
+              <p>3  AS2254 F 17OCT 6 SEAPDX HK1         1700 1753   E75 E 0</p>
+              <p>4  AA7007 J 17OCT 6 PDXLHR HK1         1845 1210+1 788 E 0</p>
+              <label for="{{ form.code.id_for_label }}">PNR код</label>
+              {{ form.code }}
+              <div class="invalid-feedback">
+                Пожалуйста, введите PNR код.
+              </div>
+            </div>
+            <div class="text-center">
+              <button type="submit" class="btn btn-primary">Конвертировать</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block styles %}
+<style>
+  form label {
+    font-size: 1.2rem;
+    font-weight: bold;
+  }
+  
+  form input[type="text"] {
+    height: 3rem;
+    font-size: 1.2rem;
+    border-radius: 0;
+    box-shadow: none;
+    border: 2px solid #ced4da;
+  }
+  
+  form input[type="text"]:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+  }
+  
+  form .invalid-feedback {
+    font-size: 0.9rem;
+    display: none;
+  }
+  
+  form .is-invalid {
+    border-color: #dc3545;
+  }
+  
+  form .is-invalid + .invalid-feedback {
+    display: block;
+  }
+  
+  form button[type="submit"] {
+    margin-top: 2rem;
+  }
+</style>
+{% endblock %}
